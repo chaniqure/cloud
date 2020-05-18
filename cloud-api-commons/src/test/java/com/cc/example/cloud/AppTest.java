@@ -1,4 +1,4 @@
-package com.cc.example;
+package com.cc.example.cloud;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class Payment8001Test
+public class AppTest 
 {
     /**
      * Rigorous Test :-)
