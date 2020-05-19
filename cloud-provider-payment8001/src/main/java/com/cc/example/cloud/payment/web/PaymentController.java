@@ -1,8 +1,8 @@
-package com.cc.example.cloud.web;
+package com.cc.example.cloud.payment.web;
 
-import com.cc.example.cloud.common.domain.Payment;
-import com.cc.example.cloud.common.dto.R;
-import com.cc.example.cloud.service.PaymentService;
+import com.cc.example.cloud.payment.common.domain.Payment;
+import com.cc.example.cloud.payment.common.dto.R;
+import com.cc.example.cloud.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,5 +23,10 @@ public class PaymentController {
     @GetMapping("/get/{id}")
     public R<Payment> getPayment(@PathVariable("id") int id) {
         return R.success(paymentService.getPayment(id));
+    }
+
+    @GetMapping("/test")
+    public R<String> test() {
+        return R.success();
     }
 }

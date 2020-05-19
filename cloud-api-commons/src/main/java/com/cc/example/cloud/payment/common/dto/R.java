@@ -1,4 +1,4 @@
-package com.cc.example.cloud.common.dto;
+package com.cc.example.cloud.payment.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

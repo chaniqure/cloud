@@ -1,7 +1,7 @@
-package com.cc.example.cloud.service;
+package com.cc.example.cloud.payment.service;
 
 import cn.hutool.core.util.RandomUtil;
-import com.cc.example.cloud.common.domain.Payment;
+import com.cc.example.cloud.payment.common.domain.Payment;
 import com.google.common.collect.Maps;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.cc.example.cloud;
+package com.cc.example.cloud.payment;
 
 import static org.junit.Assert.assertTrue;
 

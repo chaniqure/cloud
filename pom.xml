@@ -11,6 +11,7 @@
         <module>cloud-api-commons</module>
         <module>cloud-eureka-server7001</module>
         <module>cloud-eureka-server7002</module>
+        <module>cloud-consumerconsul-order80</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -32,6 +33,7 @@
         <druid.version>1.1.16</druid.version>
         <guava.version>29.0-jre</guava.version>
         <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
+        <cloud.alibaba.version>2.1.0.RELEASE</cloud.alibaba.version>
     </properties>
 
     <dependencies>
@@ -87,7 +89,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>${cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

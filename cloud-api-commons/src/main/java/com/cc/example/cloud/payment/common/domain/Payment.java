@@ -1,4 +1,4 @@
-package com.cc.example.cloud.common.domain;
+package com.cc.example.cloud.payment.common.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
