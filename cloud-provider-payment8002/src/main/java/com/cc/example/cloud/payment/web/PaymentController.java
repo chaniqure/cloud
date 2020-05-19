@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author cc
  * @since 2020/05/18 22:02
@@ -31,5 +33,20 @@ public class PaymentController {
     @GetMapping("/test")
     public R<Integer> test() {
         return R.success(port);
+    }
+
+    @GetMapping("/feign")
+    public R<Integer> feign(Integer id) {
+        return R.success(id);
+    }
+
+    @GetMapping("/feign/timeout")
+    public R<Integer> feignTimeOut() {
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return R.success();
     }
 }
