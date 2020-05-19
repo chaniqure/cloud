@@ -1,6 +1,6 @@
 package com.cc.example.cloud.order.web;
 
-import com.cc.example.cloud.payment.common.dto.R;
+import com.cc.example.cloud.common.dto.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
