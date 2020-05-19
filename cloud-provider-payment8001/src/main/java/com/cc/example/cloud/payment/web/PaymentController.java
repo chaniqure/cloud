@@ -5,6 +5,7 @@ import com.cc.example.cloud.common.dto.R;
 import com.cc.example.cloud.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
+    @Autowired
+    private DiscoveryClient discoveryClient;
     @Value("${server.port}")
     private int port;
     @PostMapping("/create/payment")
@@ -32,4 +35,11 @@ public class PaymentController {
     public R<Integer> test() {
         return R.success(port);
     }
+
+
+    @GetMapping("/discovery")
+    public R<Object> discovery() {
+        return R.success(discoveryClient.getServices()+"" + discoveryClient.getInstances("cloud-provider-payment").toArray());
+    }
+
 }
