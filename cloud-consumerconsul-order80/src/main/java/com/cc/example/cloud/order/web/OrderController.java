@@ -18,8 +18,8 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @GetMapping("/test")
-    public R<String> test() {
-        R<String> result = restTemplate.getForObject("http://cloud-provider-payment8001/payment/test", R.class);
+    public R<Integer> test() {
+        R<Integer> result = restTemplate.getForObject("http://cloud-provider-payment/payment/test", R.class);
         return R.success(result.getData());
     }
 }

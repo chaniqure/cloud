@@ -9,6 +9,7 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:7001/eureka
+    fetch-registry: true
   instance:
     instance-id: payment8001
     prefer-ip-address: true #访问路径可以显示IP地址

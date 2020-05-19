@@ -4,6 +4,7 @@ import com.cc.example.cloud.common.domain.Payment;
 import com.cc.example.cloud.common.dto.R;
 import com.cc.example.cloud.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
+    @Value("${server.port}")
+    private int port;
     @PostMapping("/create/payment")
     public R<Payment> createPayment(@RequestBody Payment payment) {
         return R.success(paymentService.createPayment(payment));
@@ -26,7 +29,7 @@ public class PaymentController {
     }
 
     @GetMapping("/test")
-    public R<String> test() {
-        return R.success();
+    public R<Integer> test() {
+        return R.success(port);
     }
 }
