@@ -25,9 +25,9 @@ public class R<T> {
     }
 
     public static R<String> fail() {
-        return new R<>(0, "失败", null);
+        return new R<>(-1, "失败", null);
     }
     public static R<String> fail(String msg) {
-        return new R<>(0, msg, null);
+        return new R<>(-1, msg, null);
     }
 }

@@ -21,9 +21,9 @@ public class PaymentService {
         return result;
     }
 
-    @HystrixCommand(fallbackMethod = "timeoutHandle", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
-    })
+    //@HystrixCommand(fallbackMethod = "timeoutHandle", commandProperties = {
+    //        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2000")
+    //})
     public String timeout(Integer id) {
         //int i = 1 / 0;
         try {

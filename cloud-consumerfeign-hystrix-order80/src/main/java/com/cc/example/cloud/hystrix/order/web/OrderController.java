@@ -2,6 +2,7 @@ package com.cc.example.cloud.hystrix.order.web;
 
 import com.cc.example.cloud.common.dto.R;
 import com.cc.example.cloud.hystrix.order.service.OrderHystrixFeignClient;
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/order")
+@DefaultProperties(defaultFallback = "globalHandler")
 public class OrderController {
     @Autowired
     private OrderHystrixFeignClient orderHystrixFeignClient;
@@ -27,14 +29,39 @@ public class OrderController {
     }
 
     @GetMapping("/timeout/{id}")
-    @HystrixCommand(fallbackMethod = "timeoutHandle", commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "2500")
+    @HystrixCommand(fallbackMethod = "timeoutHandler", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2500")
     })
     public R<String> timeout(@PathVariable("id") Integer id) {
         //int i = 1 / 0;
         return orderHystrixFeignClient.timeout(id);
     }
-    R<String> timeoutHandle(Integer id){
+
+    @GetMapping("/common/{id}")
+    //@HystrixCommand
+    public R<String  > common(@PathVariable("id") Integer id) {
+        //int i = 1 / 0;
+        return orderHystrixFeignClient.common(id);
+    }
+
+    @GetMapping("/common1/{id}")
+    @HystrixCommand
+    public R<String> common1(@PathVariable("id") Integer id) {
+        //int i = 1 / 0;
+        return orderHystrixFeignClient.common1(id);
+    }
+
+    @GetMapping("/global/{id}")
+    @HystrixCommand
+    public R<String> global(@PathVariable("id") Integer id) {
+        return orderHystrixFeignClient.timeout(id);
+    }
+
+    public R<String> timeoutHandler(Integer id) {
         return R.fail("服务端超时或报错，客户端保留处理");
+    }
+
+    public R<String> globalHandler() {
+        return R.fail("全局异常处理");
     }
 }
