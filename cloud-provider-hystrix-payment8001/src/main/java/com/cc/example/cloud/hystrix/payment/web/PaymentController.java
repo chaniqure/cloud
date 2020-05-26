@@ -3,6 +3,7 @@ package com.cc.example.cloud.hystrix.payment.web;
 import com.cc.example.cloud.common.domain.Payment;
 import com.cc.example.cloud.common.dto.R;
 import com.cc.example.cloud.hystrix.payment.service.PaymentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/payment")
+@Slf4j
 public class PaymentController {
     @Autowired
     private PaymentService paymentService;
@@ -29,4 +31,12 @@ public class PaymentController {
         return R.success(paymentService.timeout(id));
     }
 
+
+    //服务熔断
+    @GetMapping("/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("****result："+result);
+        return result;
+    }
 }
