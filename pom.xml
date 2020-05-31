@@ -25,6 +25,12 @@
         <module>cloud-config-client3355</module>
         <module>cloud-config-client3355</module>
         <module>cloud-config-client3366</module>
+        <module>cloudalibaba-provider-payment9001</module>
+        <module>cloudalibaba-config-client3001</module>
+        <module>cloudalibaba-config-client3002</module>
+        <module>cloudalibaba-provider-payment9002</module>
+        <module>cloudalibaba-consumer-order80</module>
+        <module>cloudalibaba-sentinel-service8401</module>
     </modules>
     <packaging>pom</packaging>
 
